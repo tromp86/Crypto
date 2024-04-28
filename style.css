@@ -178,6 +178,9 @@ td {
   font-size: 36px;
   margin-left: 50px;
 }
+h2{
+  margin-left: 20px;
+}
 /* шкала */
 .scale {
   width: 100%;
