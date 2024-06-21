@@ -27,7 +27,7 @@ export let itemsArray = [
     id: 3,
     name: "Stellar",
     priceBay: [0.1879, 0.1993, 0.1697, 0.1880, 0.1564, 0.135],
-    countCoin: [25, 249.5, 589, 584, 959, 148],
+    countCoin: [25, 249.5, 589, 554, 959, 148],
     priceSellSelary: [0, 0, 0],
     countSellCoin: [0, 0, 0],
     money: [4.7, 49.8, 100, 104, 150, 20],
