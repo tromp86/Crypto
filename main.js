@@ -12,7 +12,7 @@ const totalMoneySum = itemsArray.reduce(
   (acc, item) => acc + sum(item.money),
   0
 );
-myMoney.textContent = totalMoneySum - calculateTotalSellPrice();
+myMoney.textContent = totalMoneySum - calculateTotalSellPrice().toFixed(0);
 
 const remainingAmount = amount - totalMoneySum;
 remainingAmountElement.textContent = remainingAmount;
