@@ -59,17 +59,4 @@ export let itemsArray = [
     procentMoney: (4800 * (3 / 100)).toFixed(0), 
     color: "rgb(255, 4, 32)",
   },
-
-  {
-    id: 5,
-    name: "Testopism",
-    priceBay: [3.41, 3.2, 2.87, 2,56],
-    countCoin: [43.9, 15.6, 17.4, 19.53],
-    priceSellSelary: [0, 0, 0],
-    countSellCoin: [0, 0, 0],
-    money: [150, 50, 50, 50],
-    procent: 3,
-    procentMoney: (4800 * (3 / 100)).toFixed(0), 
-    color: "rgb(205, 18, 92)",
-  },
 ];
