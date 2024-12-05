@@ -59,4 +59,5 @@ export let itemsArray = [
     procentMoney: (4800 * (3 / 100)).toFixed(0), 
     color: "rgb(255, 4, 32)",
   },
+  
 ];
