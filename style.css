@@ -196,6 +196,13 @@ h2{
   border-radius: 10px;
   animation: fillAnimation 3s ease-in-out;
 }
+#totalSelaryCad {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 @keyframes fillAnimation {
   0% {

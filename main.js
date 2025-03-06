@@ -10,11 +10,20 @@ let totalSelaryElement = document.getElementById("totalSelary");
 let totalSelaryElementCAD = document.getElementById("totalSelaryCad");
 
 totalSelaryElementCAD.contentEditable = "true";
+const totalSellPrice = calculateTotalSellPrice();
+totalSelaryElement.textContent = totalSellPrice;
+totalSelaryElementCAD.textContent = 100;  // Початкове значення писати сюди гроші на акуанті які є
+
+function updateValues() {
+  let enteredValue = parseFloat(totalSelaryElementCAD.textContent) || 0;
+  totalSelaryElement.textContent = totalSellPrice - enteredValue;
+  totalSelaryElementCAD.textContent = enteredValue;
+}
+
+updateValues();
 
 totalSelaryElementCAD.addEventListener("input", function() {
-  let enteredValue = parseFloat(totalSelaryElementCAD.textContent.replace(' CAD', '')) || 0; // Витягти тільки числову частину
-  totalSelaryElement.textContent = totalSellPrice - enteredValue;
-  totalSelaryElementCAD.innerHTML = enteredValue + " <span style='user-select: none;'>CAD</span>"; // CAD залишиться статичним
+  updateValues();
 });
 
 const totalMoneySum = itemsArray.reduce(
@@ -82,6 +91,4 @@ function calculateTotalSellPrice() {
   );
   return totalSellPrice;
 }
-const totalSellPrice = calculateTotalSellPrice();
-totalSelaryElement.textContent = totalSellPrice;
-totalSelaryElementCAD.textContent = 100 + " CAD";
+
