@@ -12,8 +12,8 @@ let totalSelaryElementCAD = document.getElementById("totalSelaryCad");
 totalSelaryElementCAD.contentEditable = "true";
 const totalSellPrice = calculateTotalSellPrice();
 totalSelaryElement.textContent = totalSellPrice;
-totalSelaryElementCAD.textContent = 102;  // Початкове значення писати сюди гроші на акуанті які є
-
+totalSelaryElementCAD.textContent = 102+261;  // Початкове значення писати сюди гроші на акуанті які є
+// ще висить 261 сад на ордері солана
 function updateValues() {
   let enteredValue = parseFloat(totalSelaryElementCAD.textContent) || 0;
   totalSelaryElement.textContent = totalSellPrice - enteredValue;
@@ -55,27 +55,28 @@ itemsArray.forEach((item) => {
   const countAvailableCoin = countCoinSum - countSellCoinSum;
   const priceSellSum = sum(item.priceSellSelary);
 
-  itemsContainer.innerHTML += `
-<div class="card">
-<p class="title-text">${item.name}</p>
-<div class="title">
-<div class="circle" style="background-color: ${item.color};"></div>
-</div>
-<p>Coin: <span class="bold">${countAvailableCoin.toFixed(2)}</span></p>
-<p>Deposit: <span class="bold">${sum(item.money)}$</span></p>
+  // Створення картки
+  let cardHTML = `
+    <div class="card ${!item.static ? 'gray' : ''}"> <!-- Додаємо клас gray, якщо static false -->
+      <p class="title-text">${item.name}</p>
+      <div class="title">
+        <div class="circle" style="background-color: ${item.color};"></div>
+      </div>
+      <p>Coin: <span class="bold">${countAvailableCoin.toFixed(2)}</span></p>
+      <p>Deposit: <span class="bold">${sum(item.money)}$</span></p>
+      <p>Procent Money: <span>${item.procentMoney}$</span></p>
+      <p>Average CAD: <span class="bold">${avg.toFixed(2)}</span></p>
+      <p>Average USD: <span class="bold">${avgWithMultiplier.toFixed(2)}</span></p>
+      <hr>
+      <p>Sell Coin: <span class="boldSell">${countSellCoinSum}</span></p>
+      <p>Only one position: <span class="boldSell">${(moneySum - priceSellSum) !== 0 ? sum(item.priceSellSelary) : 0}$</span></p>
+    </div>
+  `;
 
-<p>Procent Money: <span>${item.procentMoney}$</span></p>
-<p>Average CAD: <span class="bold">${avg.toFixed(2)}</span></p>
-<p>Average USD: <span class="bold">${avgWithMultiplier.toFixed(2)}</span></p>
-<hr>
-<p>Sell Coin: <span class="boldSell">${countSellCoinSum}</span></p>
-<p>Only one position: <span class="boldSell">${
-    (moneySum - priceSellSum) !== 0 ? sum(item.priceSellSelary) : 0
-  }$</span></p>
-</div>
-`;
+  // Додавання картки до контейнера
+  itemsContainer.innerHTML += cardHTML;
 });
-{/* <p>Procent: <span class="bold">${item.procent}%</span></p> */}
+
 function sum(array) {
   return array.reduce((acc, curr) => acc + curr, 0);
 }
@@ -91,4 +92,3 @@ function calculateTotalSellPrice() {
   );
   return totalSellPrice;
 }
-
