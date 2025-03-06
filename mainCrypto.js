@@ -13,7 +13,7 @@ export let itemsArray = [
   },
   {
     id: 2,
-    name: "Matic",
+    name: "Matic (delisted)",
     priceBay: [1.65, 1.3, 1.32, 1.22, 1.21, 0.99, 1, 0.86, 0.749, 0.793,],
     countCoin: [28.2, 129.3, 76, 82, 82.5, 121.4, 82.6, 58.3, 53.4, 189.1, ],
     priceSellSelary: [0, 0, 0],
