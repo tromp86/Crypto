@@ -7,12 +7,21 @@ let remainingAmountElement = document.getElementById("remainingAmount");
 let remainingProcentElement = document.getElementById("remainingProcent");
 let myMoney = document.getElementById("myMoney");
 let totalSelaryElement = document.getElementById("totalSelary");
+let totalSelaryElementCAD = document.getElementById("totalSelaryCad");
+
+totalSelaryElementCAD.contentEditable = "true";
+
+totalSelaryElementCAD.addEventListener("input", function() {
+  let enteredValue = parseFloat(totalSelaryElementCAD.textContent.replace(' CAD', '')) || 0; // Витягти тільки числову частину
+  totalSelaryElement.textContent = totalSellPrice - enteredValue;
+  totalSelaryElementCAD.innerHTML = enteredValue + " <span style='user-select: none;'>CAD</span>"; // CAD залишиться статичним
+});
 
 const totalMoneySum = itemsArray.reduce(
   (acc, item) => acc + sum(item.money),
   0
 );
-myMoney.textContent = totalMoneySum - calculateTotalSellPrice().toFixed(0);
+myMoney.textContent = totalMoneySum - calculateTotalSellPrice();
 
 const remainingAmount = amount - totalMoneySum;
 remainingAmountElement.textContent = remainingAmount;
@@ -52,7 +61,7 @@ itemsArray.forEach((item) => {
 <hr>
 <p>Sell Coin: <span class="boldSell">${countSellCoinSum}</span></p>
 <p>Only one position: <span class="boldSell">${
-    (moneySum - priceSellSum).toFixed(0) !== 0 ? sum(item.priceSellSelary) : 0
+    (moneySum - priceSellSum) !== 0 ? sum(item.priceSellSelary) : 0
   }$</span></p>
 </div>
 `;
@@ -74,5 +83,5 @@ function calculateTotalSellPrice() {
   return totalSellPrice;
 }
 const totalSellPrice = calculateTotalSellPrice();
-totalSelaryElement.textContent = totalSellPrice.toFixed(2);
-
+totalSelaryElement.textContent = totalSellPrice;
+totalSelaryElementCAD.textContent = 100 + " CAD";
