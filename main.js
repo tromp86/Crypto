@@ -12,7 +12,7 @@ let totalSelaryElementCAD = document.getElementById("totalSelaryCad");
 totalSelaryElementCAD.contentEditable = "true";
 const totalSellPrice = calculateTotalSellPrice();
 totalSelaryElement.textContent = totalSellPrice;
-totalSelaryElementCAD.textContent = 100;  // Початкове значення писати сюди гроші на акуанті які є
+totalSelaryElementCAD.textContent = 102;  // Початкове значення писати сюди гроші на акуанті які є
 
 function updateValues() {
   let enteredValue = parseFloat(totalSelaryElementCAD.textContent) || 0;
